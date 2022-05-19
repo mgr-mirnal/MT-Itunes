@@ -25,7 +25,7 @@ class SongAdapter(private val list: List<songs>): RecyclerView.Adapter<SongAdapt
             tvArtist.text = songs.artistName
             tvSongname.text = songs.trackName
             tvprice.text = "£" + songs.trackPrice
-            tvprice.text = tvprice.text.replace("^[-].*$".toRegex(),"***Onsale***")
+            tvprice.text = tvprice.text.replace("^[£][-].*$".toRegex(),"*Onsale*")
 
             Picasso.get()
                 .load(songs.artworkUrl60)
@@ -33,13 +33,13 @@ class SongAdapter(private val list: List<songs>): RecyclerView.Adapter<SongAdapt
                 .fit()
                 .into(ivposter)
 
-          /*  itemView.setOnClickListener{
+            itemView.setOnClickListener{
                 val intent = Intent()
                 intent.action = Intent.ACTION_VIEW
-                intent.setDataAndType(Uri.parse(songs.previewUrl),"audio")
+                intent.setDataAndType(Uri.parse(songs.previewUrl),"audio/*")
                 itemView.context.startActivity(intent)
             }
-            */
+
         }
 
     }

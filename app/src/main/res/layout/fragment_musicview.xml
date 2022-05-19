@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple_200"
+    android:layout_margin="10dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,34 +12,43 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         >
-
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="90dp"
+            />
 
         <ImageView
             android:id="@+id/poster"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            android:contentDescription="image" />
         <TextView
             android:id="@+id/tv_song_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Song Name"
+            app:layout_constrainedWidth="true"
+            android:textSize="14sp"
+            android:text="Song name"
             app:layout_constraintStart_toEndOf="@id/poster"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintTop_toTopOf="parent"
-            android:textSize="20sp"
             />
         <TextView
             android:id="@+id/tv_artist_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Album"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:layout_margin="10dp"
              app:layout_constraintStart_toEndOf="@id/poster"
             android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintTop_toBottomOf="@id/tv_song_name"
             />
 
@@ -47,8 +56,8 @@
             android:id="@+id/tv_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text=" 1.24 USD"
+            android:textSize="14sp"
+            android:text="1.24 USD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_song_name"/>
 

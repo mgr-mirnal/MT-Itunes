@@ -19,21 +19,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var tab_toolbar = findViewById<Toolbar>(R.id.toolbar)
-        var tab_viewpager = findViewById<ViewPager>(R.id.tab_viewpager)
-        var tab_tablayout = findViewById<TabLayout>(R.id.tab_tablayout)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val viewpager = findViewById<ViewPager>(R.id.tab_viewpager)
+        val tablayout = findViewById<TabLayout>(R.id.tab_tablayout)
 
 
         // setSupportActionBar method
-        setSupportActionBar(tab_toolbar)
+        setSupportActionBar(toolbar)
 
-        setupViewPager(tab_viewpager)
+        setupViewPager(viewpager)
 
         // If we dont use setupWithViewPager() method then
         // tabs are not used or shown when activity opened
-        tab_tablayout.setupWithViewPager(tab_viewpager)
+        tablayout.setupWithViewPager(viewpager)
+
+        val imageResId = intArrayOf(
+            R.drawable.rock,
+            R.drawable.classic,
+            R.drawable.pop
+        )
+
+        for (i in imageResId.indices) {
+            tablayout.getTabAt(i)?.setIcon(imageResId[i])
+        }
 
     }
+
 
     private fun setupViewPager(tabViewpager: ViewPager) {
         var adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
@@ -58,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         // returns which item is selected from arraylist of fragments.
         override fun getItem(position: Int): Fragment {
-            return fragmentList1.get(position)
+            return fragmentList1[position]
         }
 
         // returns which item is selected from arraylist of titles.
